@@ -43,7 +43,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # File paths
-CLEANED_FILE = "/Users/ernestobayon/UBER EATS PROJECT/cleaned_uber_eats_data.csv"
+CLEANED_FILE = "cleaned_uber_eats_data.csv"
 
 
 @st.cache_data
