@@ -684,7 +684,7 @@ def display_strategy(df):
     st.markdown("---")
     
     # ========== STRATEGIC RECOMMENDATIONS ==========
-    st.subheader("🚀 Top 3 Strategic Recommendations")
+    st.subheader("🚀 Top 6 Strategic Recommendations")
     st.caption("Prioritized by ROI and implementation feasibility")
     
     # RECOMMENDATION 1
@@ -713,11 +713,99 @@ def display_strategy(df):
     
     st.markdown("---")
     
-    # RECOMMENDATION 2
+    # RECOMMENDATION 2 - NEW
     with st.container():
         col1, col2 = st.columns([1, 3])
         with col1:
             st.markdown("### 2️⃣")
+            st.markdown("**Priority**")
+            st.success("HIGH")
+        with col2:
+            st.markdown("### 🎁 Free Delivery Promo ($50+ Threshold)")
+            st.markdown("""
+            **Current State**: 2,650 orders fall in "$40-50 nudge zone" - just $5-10 away from $50  
+            **Opportunity**: Push customers over $50 threshold with free delivery incentive  
+            
+            **Action Plan**:
+            - Offer free delivery on orders $50+ (test Sunday-only first: ~$3K cost)
+            - Show real-time progress bar: "Add $7 more for FREE delivery!"
+            - Target high-value customers in the $40-50 range with personalized offers
+            
+            **Expected Impact**:
+            - Convert 30-40% of $40-50 orders to $50+ (adding $10-15 per order)
+            - Sunday-only test: $3K investment → $26K-35K additional revenue
+            - Always-on: $24K investment → $100K-140K additional revenue annually
+            - ROI Timeline: **2-4 months**
+            """)
+    
+    st.markdown("---")
+    
+    # RECOMMENDATION 3 - NEW
+    with st.container():
+        col1, col2 = st.columns([1, 3])
+        with col1:
+            st.markdown("### 3️⃣")
+            st.markdown("**Priority**")
+            st.success("HIGH")
+        with col2:
+            st.markdown("### 🎯 Weekend Scheduling Incentive")
+            st.markdown("""
+            **Current State**: Weekend scheduling only 14% (vs 22% weekday) - huge untapped potential  
+            **Opportunity**: Scheduled orders 1.8x larger ($80 vs $44) + better for operations  
+            
+            **Action Plan**:
+            - Offer "$3 off when you schedule 24hrs ahead on Sat/Sun"
+            - Send Friday reminders: "Plan your weekend meals, save $3 per order"
+            - Highlight popular brunch/dinner spots available for scheduling
+            
+            **Expected Impact**:
+            - Increase weekend scheduling from 14% → 22% (match weekday rate)
+            - Additional 8% of weekend orders = ~400 more scheduled orders/month
+            - Added revenue: **+$80K-100K annually**
+            - ROI Timeline: **3-5 months**
+            """)
+    
+    st.markdown("---")
+    
+    # RECOMMENDATION 4 - NEW
+    with st.container():
+        col1, col2 = st.columns([1, 3])
+        with col1:
+            st.markdown("### 4️⃣")
+            st.markdown("**Priority**")
+            st.warning("MEDIUM")
+        with col2:
+            st.markdown("### 🧪 A/B Testing Framework")
+            st.markdown("""
+            **Current State**: No systematic testing before rolling out new strategies  
+            **Opportunity**: Validate all strategies with data before full investment  
+            
+            **Test Design**:
+            - **Group A (Control)**: No promotion
+            - **Group B (Test)**: Free delivery $50+ OR $3 off scheduled weekend orders
+            
+            **What to Measure**:
+            - Average order value
+            - % of scheduled orders
+            - Refund rate
+            - Repeat order rate
+            
+            **Decision Rule**: Launch promo if test group performs >10% better than control  
+            
+            **Expected Impact**:
+            - Reduce risk of failed promotions
+            - Data-driven decision making
+            - Optimize promo design before full rollout
+            - ROI Timeline: **Test in 2-4 weeks, then scale**
+            """)
+    
+    st.markdown("---")
+    
+    # RECOMMENDATION 5 (formerly #2)
+    with st.container():
+        col1, col2 = st.columns([1, 3])
+        with col1:
+            st.markdown("### 5️⃣")
             st.markdown("**Priority**")
             st.warning("MEDIUM")
         with col2:
@@ -739,27 +827,32 @@ def display_strategy(df):
     
     st.markdown("---")
     
-    # RECOMMENDATION 3
+    # RECOMMENDATION 6 (formerly #3)
     with st.container():
         col1, col2 = st.columns([1, 3])
         with col1:
-            st.markdown("### 3️⃣")
+            st.markdown("### 6️⃣")
             st.markdown("**Priority**")
             st.warning("MEDIUM")
         with col2:
-            st.markdown("### ⚡ Optimize Peak Hour Performance")
+            st.markdown("### ⚡ Optimize Peak Hour Performance (Focus on Prep Time)")
             st.markdown("""
-            **Current State**: Average delivery time is 57.3 minutes; peak hours show delays  
-            **Opportunity**: Faster delivery = higher customer satisfaction = more repeat orders  
+            **Current State**: Prep time is the LARGEST component of total delivery time  
+            **Opportunity**: Reducing prep time = biggest impact on overall delivery speed  
+            
+            **Key Finding**: Delivery delays are fully determined by operational stages:
+            - **Prep time** (restaurant food preparation) = largest component
+            - Wait time + Travel time = smaller contributors
             
             **Action Plan**:
-            - Implement predictive driver allocation for Wednesday/Tuesday peaks
-            - Pre-position drivers in high-demand zones before busy hours
-            - Share prep time targets with restaurants (with incentives)
+            - Incentivize faster restaurant preparation (badges, bonuses for <15min prep)
+            - Improve coordination between restaurants and drivers (better timing)
+            - Share prep time data with restaurants so they can optimize
+            - Pre-position drivers near slow-prep restaurants during peak hours
             
             **Expected Impact**:
             - Reduce average delivery time by **20%** (57 min → 46 min)
-            - Improve efficiency during peak hours by **15-20%**
+            - Improve customer satisfaction and repeat orders
             - ROI Timeline: **6-12 months**
             """)
     
@@ -859,13 +952,14 @@ def display_strategy(df):
     
     st.success("""
     **1. Scheduled Orders = Hidden Goldmine**: 82% higher revenue per order with only 20% current adoption  
-    **2. Geographic Imbalance**: 63% of orders in one region leaves massive growth opportunity  
-    **3. Speed Matters**: 20% faster delivery = happier customers = more repeat business  
-    **4. Holiday Data Caveat**: Dec 25-31 spike is seasonal; use Days 1-24 for typical projections  
-    **5. Data-Driven**: Every recommendation backed by 18,078 real orders  
+    **2. Free Delivery Sweet Spot**: 2,650 orders in $40-50 range - perfect for $50+ free delivery push  
+    **3. Weekend Opportunity**: Weekend scheduling at 14% vs 22% weekday - untapped potential  
+    **4. Test Before Scaling**: Use A/B testing to validate strategies before full investment  
+    **5. Prep Time = Key Bottleneck**: Reducing restaurant prep time has biggest delivery impact  
+    **6. Holiday Data Caveat**: Dec 25-31 spike is seasonal; use Days 1-24 for typical projections  
     """)
     
-    st.info("💡 **Pro Tip**: Focus your PPT on the Scheduled Orders opportunity - it's the easiest to implement and has the highest immediate ROI.")
+    st.info("💡 **Pro Tip for PPT**: Focus on top 3 strategies (#1 Scheduled Orders, #2 Free Delivery $50+, #3 Weekend Scheduling) - they're easiest to implement with highest ROI. Use #4 A/B Testing to validate them!")
 
 
 # ========================================
