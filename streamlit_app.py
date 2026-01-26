@@ -684,7 +684,7 @@ def display_strategy(df):
     st.markdown("---")
     
     # ========== STRATEGIC RECOMMENDATIONS ==========
-    st.subheader("🚀 Top 6 Strategic Recommendations")
+    st.subheader("🚀 Top 4 Strategic Recommendations")
     st.caption("Prioritized by ROI and implementation feasibility")
     
     # RECOMMENDATION 1
@@ -713,65 +713,11 @@ def display_strategy(df):
     
     st.markdown("---")
     
-    # RECOMMENDATION 2 - NEW
+    # RECOMMENDATION 2 (formerly #4)
     with st.container():
         col1, col2 = st.columns([1, 3])
         with col1:
             st.markdown("### 2️⃣")
-            st.markdown("**Priority**")
-            st.success("HIGH")
-        with col2:
-            st.markdown("### 🎁 Free Delivery Promo ($50+ Threshold)")
-            st.markdown("""
-            **Current State**: 2,650 orders fall in "$40-50 nudge zone" - just $5-10 away from $50  
-            **Opportunity**: Push customers over $50 threshold with free delivery incentive  
-            
-            **Action Plan**:
-            - Offer free delivery on orders $50+ (test Sunday-only first: ~$3K cost)
-            - Show real-time progress bar: "Add $7 more for FREE delivery!"
-            - Target high-value customers in the $40-50 range with personalized offers
-            
-            **Expected Impact**:
-            - Convert 30-40% of $40-50 orders to $50+ (adding $10-15 per order)
-            - Sunday-only test: $3K investment → $26K-35K additional revenue
-            - Always-on: $24K investment → $100K-140K additional revenue annually
-            - ROI Timeline: **2-4 months**
-            """)
-    
-    st.markdown("---")
-    
-    # RECOMMENDATION 3 - NEW
-    with st.container():
-        col1, col2 = st.columns([1, 3])
-        with col1:
-            st.markdown("### 3️⃣")
-            st.markdown("**Priority**")
-            st.success("HIGH")
-        with col2:
-            st.markdown("### 🎯 Weekend Scheduling Incentive")
-            st.markdown("""
-            **Current State**: Weekend scheduling only 14% (vs 22% weekday) - huge untapped potential  
-            **Opportunity**: Scheduled orders 1.8x larger ($80 vs $44) + better for operations  
-            
-            **Action Plan**:
-            - Offer "$3 off when you schedule 24hrs ahead on Sat/Sun"
-            - Send Friday reminders: "Plan your weekend meals, save $3 per order"
-            - Highlight popular brunch/dinner spots available for scheduling
-            
-            **Expected Impact**:
-            - Increase weekend scheduling from 14% → 22% (match weekday rate)
-            - Additional 8% of weekend orders = ~400 more scheduled orders/month
-            - Added revenue: **+$80K-100K annually**
-            - ROI Timeline: **3-5 months**
-            """)
-    
-    st.markdown("---")
-    
-    # RECOMMENDATION 4 - NEW
-    with st.container():
-        col1, col2 = st.columns([1, 3])
-        with col1:
-            st.markdown("### 4️⃣")
             st.markdown("**Priority**")
             st.warning("MEDIUM")
         with col2:
@@ -782,7 +728,7 @@ def display_strategy(df):
             
             **Test Design**:
             - **Group A (Control)**: No promotion
-            - **Group B (Test)**: Free delivery $50+ OR $3 off scheduled weekend orders
+            - **Group B (Test)**: Test new promotional strategies
             
             **What to Measure**:
             - Average order value
@@ -801,15 +747,15 @@ def display_strategy(df):
     
     st.markdown("---")
     
-    # RECOMMENDATION 5 (formerly #2)
+    # RECOMMENDATION 3 (formerly #5)
     with st.container():
         col1, col2 = st.columns([1, 3])
         with col1:
-            st.markdown("### 5️⃣")
+            st.markdown("### 3️⃣")
             st.markdown("**Priority**")
             st.warning("MEDIUM")
         with col2:
-            st.markdown("### 📍 Balance Regional Distribution")
+            st.markdown("📍 Balance Regional Distribution")
             st.markdown("""
             **Current State**: Palo Alto has 63% of orders; San Jose & Mountain View underserved  
             **Opportunity**: Untapped market potential in two regions  
@@ -827,11 +773,11 @@ def display_strategy(df):
     
     st.markdown("---")
     
-    # RECOMMENDATION 6 (formerly #3)
+    # RECOMMENDATION 4 (formerly #6)
     with st.container():
         col1, col2 = st.columns([1, 3])
         with col1:
-            st.markdown("### 6️⃣")
+            st.markdown("### 4️⃣")
             st.markdown("**Priority**")
             st.warning("MEDIUM")
         with col2:
@@ -952,14 +898,13 @@ def display_strategy(df):
     
     st.success("""
     **1. Scheduled Orders = Hidden Goldmine**: 82% higher revenue per order with only 20% current adoption  
-    **2. Free Delivery Sweet Spot**: 2,650 orders in $40-50 range - perfect for $50+ free delivery push  
-    **3. Weekend Opportunity**: Weekend scheduling at 14% vs 22% weekday - untapped potential  
-    **4. Test Before Scaling**: Use A/B testing to validate strategies before full investment  
-    **5. Prep Time = Key Bottleneck**: Reducing restaurant prep time has biggest delivery impact  
-    **6. Holiday Data Caveat**: Dec 25-31 spike is seasonal; use Days 1-24 for typical projections  
+    **2. Test Before Scaling**: Use A/B testing to validate strategies before full investment  
+    **3. Geographic Imbalance**: 63% of orders in one region leaves massive growth opportunity  
+    **4. Prep Time = Key Bottleneck**: Reducing restaurant prep time has biggest delivery impact  
+    **5. Holiday Data Caveat**: Dec 25-31 spike is seasonal; use Days 1-24 for typical projections  
     """)
     
-    st.info("💡 **Pro Tip for PPT**: Focus on top 3 strategies (#1 Scheduled Orders, #2 Free Delivery $50+, #3 Weekend Scheduling) - they're easiest to implement with highest ROI. Use #4 A/B Testing to validate them!")
+    st.info("💡 **Pro Tip for PPT**: Focus on #1 Scheduled Orders strategy - it has the highest ROI and is easiest to implement. Use #2 A/B Testing to validate before full rollout!")
 
 
 # ========================================
