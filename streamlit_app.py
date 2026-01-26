@@ -917,24 +917,77 @@ def display_strategy(df):
         with col2:
             st.markdown("### ⚡ Optimize Peak Hour Performance (Focus on Prep Time)")
             st.markdown("""
-            **Current State**: Prep time is the LARGEST component of total delivery time  
+            **Current State**: Delivery time breakdown shows prep issues  
             **Opportunity**: Reducing prep time = biggest impact on overall delivery speed  
             
-            **Key Finding**: Delivery delays are fully determined by operational stages:
-            - **Prep time** (restaurant food preparation) = largest component
-            - Wait time + Travel time = smaller contributors
+            **Key Finding**: Delivery time comes from prep, driver wait, and travel:
+            - **Prep Time**: 10.7 minutes (restaurant food preparation)
+            - **Driver Wait Time**: 17.1 minutes (driver waiting for order)
+            - **Travel Time**: 24.2 minutes (delivery to customer)
+            - **Total Average**: ~52 minutes
+            
+            **Why This Matters**:
+            - Prep happens FIRST, so delays here affect everything after
+            - Longer deliveries lead to **lower tips** and **higher refund rates**
+            - Cascading effect on customer satisfaction
             
             **Action Plan**:
-            - Incentivize faster restaurant preparation (badges, bonuses for <15min prep)
-            - Improve coordination between restaurants and drivers (better timing)
-            - Share prep time data with restaurants so they can optimize
-            - Pre-position drivers near slow-prep restaurants during peak hours
+            - Set clear prep time targets (<15 min for most orders)
+            - Improve coordination with drivers (better timing = less wait)
+            - Use past data to predict prep issues and allocate resources
+            - Incentivize faster restaurant preparation (badges, bonuses)
             
             **Expected Impact**:
-            - Reduce average delivery time by **20%** (57 min → 46 min)
+            - Reduce average delivery time by **20%** (52 min → 42 min)
             - Improve customer satisfaction and repeat orders
+            - Increase tips and reduce refunds
             - ROI Timeline: **6-12 months**
             """)
+            
+            # Add visualization for delivery time breakdown
+            st.markdown("")
+            st.markdown("**📊 Delivery Time Breakdown by Stage:**")
+            
+            fig_delivery = go.Figure()
+            
+            # Data from the presentation
+            stages = ['Prep Time', 'Driver Wait Time', 'Travel Time']
+            times = [10.7, 17.1, 24.2]
+            colors = ['#FF6B6B', '#FFA500', '#06C167']
+            
+            fig_delivery.add_trace(go.Bar(
+                x=stages,
+                y=times,
+                marker_color=colors,
+                text=[f'{t} min' for t in times],
+                textposition='outside',
+                textfont=dict(size=16, color='white'),
+                hovertemplate='<b>%{x}</b><br>Average Time: %{y} minutes<extra></extra>'
+            ))
+            
+            fig_delivery.update_layout(
+                title="Average Delivery Time by Operational Stage",
+                yaxis_title="Average Minutes",
+                showlegend=False,
+                height=400,
+                paper_bgcolor='rgba(0,0,0,0)',
+                plot_bgcolor='rgba(0,0,0,0)',
+                font=dict(color='white'),
+                yaxis=dict(gridcolor='rgba(255,255,255,0.1)', range=[0, 27])
+            )
+            
+            # Add annotation highlighting prep time impact
+            fig_delivery.add_annotation(
+                x=0, y=10.7,
+                text="Prep happens FIRST<br>Delays cascade!",
+                showarrow=True,
+                arrowhead=2,
+                arrowcolor="#FF6B6B",
+                font=dict(size=12, color="#FF6B6B"),
+                ax=50, ay=-40
+            )
+            
+            st.plotly_chart(fig_delivery, use_container_width=True)
     
     st.markdown("---")
     
