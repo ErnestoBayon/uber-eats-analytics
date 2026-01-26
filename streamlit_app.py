@@ -710,6 +710,140 @@ def display_strategy(df):
             - Additional revenue: **+$150K-200K annually**
             - ROI Timeline: **3-6 months**
             """)
+            
+            # Visualizations for Scheduled Orders Strategy
+            st.markdown("")
+            st.markdown("**📊 Visual Impact:**")
+            
+            # Option 1: Side-by-Side Revenue Comparison
+            viz_col1, viz_col2 = st.columns(2)
+            
+            with viz_col1:
+                st.markdown("**Average Revenue per Order Type**")
+                fig1 = go.Figure()
+                fig1.add_trace(go.Bar(
+                    x=['ASAP Orders', 'Scheduled Orders'],
+                    y=[43.48, 79.06],
+                    marker_color=['#FF6B6B', '#06C167'],
+                    text=['$43.48', '$79.06'],
+                    textposition='outside',
+                    textfont=dict(size=16, color='white'),
+                    hovertemplate='<b>%{x}</b><br>Average Revenue: %{y}<extra></extra>'
+                ))
+                fig1.update_layout(
+                    title="Revenue Comparison: ASAP vs Scheduled",
+                    yaxis_title="Average Revenue ($)",
+                    showlegend=False,
+                    height=350,
+                    paper_bgcolor='rgba(0,0,0,0)',
+                    plot_bgcolor='rgba(0,0,0,0)',
+                    font=dict(color='white'),
+                    yaxis=dict(gridcolor='rgba(255,255,255,0.1)')
+                )
+                fig1.add_annotation(
+                    x=1, y=79.06,
+                    text="82% Higher!",
+                    showarrow=True,
+                    arrowhead=2,
+                    arrowcolor="#06C167",
+                    font=dict(size=14, color="#06C167", family="Arial Black"),
+                    ax=-40, ay=-40
+                )
+                st.plotly_chart(fig1, use_container_width=True)
+            
+            with viz_col2:
+                st.markdown("**Order Distribution: Current vs Target**")
+                fig2 = go.Figure()
+                
+                # Current distribution
+                fig2.add_trace(go.Bar(
+                    name='Current',
+                    x=['ASAP (80%)', 'Scheduled (20%)'],
+                    y=[80, 20],
+                    marker_color=['#FF6B6B', '#FFA07A'],
+                    text=['80%', '20%'],
+                    textposition='inside',
+                    textfont=dict(size=16, color='white')
+                ))
+                
+                # Target distribution
+                fig2.add_trace(go.Bar(
+                    name='Target',
+                    x=['ASAP (65%)', 'Scheduled (35%)'],
+                    y=[65, 35],
+                    marker_color=['#FF8C8C', '#06C167'],
+                    text=['65%', '35%'],
+                    textposition='inside',
+                    textfont=dict(size=16, color='white')
+                ))
+                
+                fig2.update_layout(
+                    title="Current vs Target Distribution",
+                    yaxis_title="Percentage of Orders",
+                    barmode='group',
+                    height=350,
+                    paper_bgcolor='rgba(0,0,0,0)',
+                    plot_bgcolor='rgba(0,0,0,0)',
+                    font=dict(color='white'),
+                    yaxis=dict(gridcolor='rgba(255,255,255,0.1)', range=[0, 100]),
+                    legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
+                )
+                st.plotly_chart(fig2, use_container_width=True)
+            
+            # Option 2: Before/After Revenue Projection
+            st.markdown("**Monthly Revenue Projection**")
+            
+            # Calculate projections based on data
+            asap_revenue = 43.48 * 0.80  # Current ASAP contribution per order
+            scheduled_revenue = 79.06 * 0.20  # Current scheduled contribution per order
+            current_avg = asap_revenue + scheduled_revenue  # ~$50.58 per order
+            
+            target_asap = 43.48 * 0.65
+            target_scheduled = 79.06 * 0.35
+            target_avg = target_asap + target_scheduled  # ~$56 per order
+            
+            # Assuming ~600 orders per day (18,078 / 31 days)
+            monthly_orders = 18000
+            current_monthly = current_avg * monthly_orders
+            target_monthly = target_avg * monthly_orders
+            increase = target_monthly - current_monthly
+            
+            fig3 = go.Figure()
+            
+            fig3.add_trace(go.Bar(
+                x=['Current Revenue<br>(20% Scheduled)', 'Projected Revenue<br>(35% Scheduled)', 'Additional Gain'],
+                y=[current_monthly, target_monthly, increase],
+                marker_color=['#FF6B6B', '#06C167', '#FFD93D'],
+                text=[f'${current_monthly:,.0f}', f'${target_monthly:,.0f}', f'+${increase:,.0f}'],
+                textposition='outside',
+                textfont=dict(size=14, color='white'),
+                hovertemplate='<b>%{x}</b><br>Revenue: $%{y:,.0f}<extra></extra>'
+            ))
+            
+            fig3.update_layout(
+                title="Monthly Revenue Impact (Based on 18K Orders/Month)",
+                yaxis_title="Monthly Revenue ($)",
+                showlegend=False,
+                height=400,
+                paper_bgcolor='rgba(0,0,0,0)',
+                plot_bgcolor='rgba(0,0,0,0)',
+                font=dict(color='white'),
+                yaxis=dict(gridcolor='rgba(255,255,255,0.1)')
+            )
+            
+            # Add annotation for percentage increase
+            pct_increase = (increase / current_monthly) * 100
+            fig3.add_annotation(
+                x=1, y=target_monthly,
+                text=f"+{pct_increase:.1f}% Growth!",
+                showarrow=True,
+                arrowhead=2,
+                arrowcolor="#06C167",
+                font=dict(size=14, color="#06C167", family="Arial Black"),
+                ax=-60, ay=-40
+            )
+            
+            st.plotly_chart(fig3, use_container_width=True)
     
     st.markdown("---")
     
